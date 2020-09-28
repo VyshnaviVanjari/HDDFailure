@@ -387,9 +387,11 @@ Sort the DataFrame by serial_number and date to extract time series features.
 
 ### 8.1. Rolling Mean, Standard Deviation for SMART parameters - window 15
 
-We can write code using pd.DataFrame.shift function but that won't work here.<br /> 
+We can write code using pd.DataFrame.shift function but we shouldn't do that directly for a column.<br /> 
 We have different models with different serial numbers.<br /> 
 For every unique serial number, we need to calculate rolling mean and standard deviation.<br />
+We can write code with shift function by looping over all the unique serial numbers but it takes a lot of time as there are many thousands of unique serial numbers.<br />
+Hence written code as pointed below.<br />
 Here we take window=15.
 
     serial_numbers=df_new_with_lag['serial_number'].values
